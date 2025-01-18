@@ -30,6 +30,8 @@ input_cart_year = navegador.find_element(By.XPATH ,"//*[@id='year']")
 item1 = navegador.find_element(By.XPATH ,"//*[@id='tbodyid']/div[1]/div/div/h4/a")
 item2 = navegador.find_element(By.XPATH ,"//*[@id='tbodyid']/div[4]/div/div/h4/a")
 item3 = navegador.find_element(By.XPATH ,"//*[@id='tbodyid']/div[3]/div/div/h4/a")
+preco_atual_string = navegador.find_element(By.XPATH, "//*[@id='totalp']").text
+preco_autal = preco_atual_string = int(preco_atual_string)
 
 
 def registar_e_logar():
@@ -61,9 +63,11 @@ def adicionar_itens():
     item3.click()
     adiciona_carrinho_e_volta()
 
-def fechar_conta():
+def abrir_carrinho():
     botao_carrinho.click()
     time.sleep(3)
+
+def responder_formulario():
     botao_checkout.click()
     time.sleep(3)
     input_cart_name.send_keys("Vitor Hugo Silva de Oliveira")
@@ -72,10 +76,19 @@ def fechar_conta():
     input_cart_creditcard.send_keys("XXXXXXXXXXXXXXXX")
     input_cart_month.send_keys("9")
     input_cart_year.send_keys("2001")
+    
+def verificar_preco_certo():
+    preco_certo = 1810
+    if preco_certo != preco_autal:
+        navegador.execute_script("alert('Erro encontrado na precificação');")
+    else:
+        pass
 
 registar_e_logar()
 time.sleep(5)
 adicionar_itens()
 time.sleep(5)
-fechar_conta()
+abrir_carrinho()
+verificar_preco_certo()
+responder_formulario()
 time.sleep(10)
