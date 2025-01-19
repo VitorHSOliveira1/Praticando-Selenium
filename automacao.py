@@ -34,6 +34,8 @@ preco_atual_string = navegador.find_element(By.XPATH, "//*[@id='totalp']").text
 preco_autal = preco_atual_string = int(preco_atual_string)
 
 
+
+
 def registar_e_logar():
     botao_registrar.click()
     time.sleep(3)
