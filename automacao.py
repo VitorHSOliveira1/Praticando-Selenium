@@ -45,7 +45,7 @@ def registar_e_logar():
     botao_login.click()
     time.sleep(3)
     input_username_login.send_keys("vitorhsoliveira13@gmail.com")
-    input_password_login.send_keys("clarice123")
+    input_password_login.send_keys("123456")
     botao_login.click()
     
 
